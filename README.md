@@ -27,7 +27,7 @@
 - **Email & Phone Verification (SMS / OTP)**  
 - **User Profile Page**
 
-### 5. Admin Dashboard
+### 5. Admin Dashboard (Belum Responsive)
 - Modern admin panel dengan **sidebar dan top navbar**
 - Full CRUD:
   - **Users**: List, Create, Edit, Show, Delete  
@@ -37,7 +37,6 @@
 - **Settings**:
   - General, Downloads, Security, Notifications
 - **Logs**: List & Filter aktivitas user
-- Fully responsive & modern UI ('Kecuali Dashboard')
 
 ### 6. Teknologi
 - **Bootstrap 5** untuk layout & komponen  
