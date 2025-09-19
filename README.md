@@ -51,8 +51,8 @@
 1. **Clone repository**:
 
 ```bash
-git clone https://github.com/username/modernblog-template.git
-cd modernblog-template
+git clone https://github.com/username/my-blog-template.git
+cd my-blog-template
 ```
 
 2. **Buka file HTML di browser**:
