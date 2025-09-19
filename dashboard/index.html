@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | ModernBlog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: #007bff;
+      min-height: 100vh;
+      color: #fff;
+    }
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      display: block;
+      border-radius: 0.5rem;
+      margin-bottom: 0.3rem;
+      transition: 0.3s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .top-navbar {
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 0.5rem 1rem;
+    }
+
+    .card-stats {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-stats:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+
+    .table-card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-2 sidebar p-3">
+      <h3 class="text-center mb-4">Admin</h3>
+      <a href="#" class="active"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+      <a href="#"><i class="fas fa-users me-2"></i>Users</a>
+      <a href="#"><i class="fas fa-file-alt me-2"></i>Posts</a>
+      <a href="#"><i class="fas fa-folder me-2"></i>Categories</a>
+      <a href="#"><i class="fas fa-tags me-2"></i>Tags</a>
+      <a href="#"><i class="fas fa-download me-2"></i>Ebooks / Downloads</a>
+      <a href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+      <a href="#"><i class="fas fa-history me-2"></i>Logs</a>
+      <a href="#" class="text-danger"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-10 p-4">
+      <!-- Top Navbar -->
+      <div class="top-navbar d-flex justify-content-between align-items-center mb-4">
+        <h2>Dashboard</h2>
+        <div>
+          <i class="fas fa-bell me-3"></i>
+          <i class="fas fa-user-circle fa-lg"></i>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="row g-4 mb-4">
+        <div class="col-md-3" data-aos="fade-up">
+          <div class="card-stats text-center">
+            <h5>Total Users</h5>
+            <h3>1,245</h3>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up">
+          <div class="card-stats text-center">
+            <h5>Total Posts</h5>
+            <h3>845</h3>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up">
+          <div class="card-stats text-center">
+            <h5>Total Categories</h5>
+            <h3>42</h3>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up">
+          <div class="card-stats text-center">
+            <h5>Total Tags</h5>
+            <h3>128</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="row mb-4">
+        <div class="col-md-6" data-aos="fade-up">
+          <div class="card-stats p-4">
+            <h5>Posts Activity</h5>
+            <canvas id="postsChart"></canvas>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up">
+          <div class="card-stats p-4">
+            <h5>New Users</h5>
+            <canvas id="usersChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Posts Table -->
+      <div class="table-card" data-aos="fade-up">
+        <h5>Recent Posts</h5>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Category</th>
+              <th>Views</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>How to Build a Modern Blog</td>
+              <td>John Doe</td>
+              <td>Web Development</td>
+              <td>1200</td>
+              <td><span class="badge bg-success">Published</span></td>
+              <td><button class="btn btn-sm btn-primary">Edit</button></td>
+            </tr>
+            <tr>
+              <td>Bootstrap 5 Tips & Tricks</td>
+              <td>Jane Smith</td>
+              <td>UI/UX</td>
+              <td>850</td>
+              <td><span class="badge bg-warning">Draft</span></td>
+              <td><button class="btn btn-sm btn-primary">Edit</button></td>
+            </tr>
+            <tr>
+              <td>Responsive Design Best Practices</td>
+              <td>John Doe</td>
+              <td>Design</td>
+              <td>950</td>
+              <td><span class="badge bg-success">Published</span></td>
+              <td><button class="btn btn-sm btn-primary">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+
+  // Chart.js example
+  const postsChart = new Chart(document.getElementById('postsChart'), {
+    type: 'line',
+    data: {
+      labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul'],
+      datasets: [{
+        label: 'Posts',
+        data: [12, 19, 14, 21, 18, 25, 22],
+        borderColor: '#007bff',
+        backgroundColor: 'rgba(0,123,255,0.2)',
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false } } }
+  });
+
+  const usersChart = new Chart(document.getElementById('usersChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul'],
+      datasets: [{
+        label: 'Users',
+        data: [5, 8, 6, 10, 7, 12, 9],
+        backgroundColor: '#28a745'
+      }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false } } }
+  });
+</script>
+
+</body>
+</html>

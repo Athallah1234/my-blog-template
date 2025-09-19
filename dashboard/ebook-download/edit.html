@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Edit Ebook | ModernBlog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: #007bff;
+      min-height: 100vh;
+      color: #fff;
+    }
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      display: block;
+      border-radius: 0.5rem;
+      margin-bottom: 0.3rem;
+      transition: 0.3s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .top-navbar {
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 0.5rem 1rem;
+    }
+
+    .form-card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-2 sidebar p-3">
+      <h3 class="text-center mb-4">Admin</h3>
+      <a href="#"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+      <a href="#"><i class="fas fa-users me-2"></i>Users</a>
+      <a href="#"><i class="fas fa-file-alt me-2"></i>Posts</a>
+      <a href="#"><i class="fas fa-folder me-2"></i>Categories</a>
+      <a href="#"><i class="fas fa-tags me-2"></i>Tags</a>
+      <a href="#" class="active"><i class="fas fa-download me-2"></i>Ebooks / Downloads</a>
+      <a href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+      <a href="#"><i class="fas fa-history me-2"></i>Logs</a>
+      <a href="#" class="text-danger"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-10 p-4">
+      <!-- Top Navbar -->
+      <div class="top-navbar d-flex justify-content-between align-items-center mb-4">
+        <h2>Edit Ebook / Download</h2>
+        <div>
+          <i class="fas fa-bell me-3"></i>
+          <i class="fas fa-user-circle fa-lg"></i>
+        </div>
+      </div>
+
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+          <li class="breadcrumb-item"><a href="#">Ebooks / Downloads</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Edit</li>
+        </ol>
+      </nav>
+
+      <!-- Edit Ebook Form -->
+      <div class="form-card" data-aos="fade-up">
+        <h2 class="mb-4">Edit Ebook / Download</h2>
+        <form id="editEbookForm" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" value="Learn Bootstrap 5" required>
+          </div>
+          <div class="mb-3">
+            <label for="slug" class="form-label">Slug</label>
+            <input type="text" class="form-control" id="slug" value="learn-bootstrap-5" required>
+          </div>
+          <div class="mb-3">
+            <label for="type" class="form-label">Type</label>
+            <select class="form-select" id="type" required>
+              <option value="ebook" selected>Ebook</option>
+              <option value="sourcecode">Source Code</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" rows="4">A comprehensive guide to Bootstrap 5</textarea>
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" id="status" required>
+              <option value="draft">Draft</option>
+              <option value="published" selected>Published</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="publishDate" class="form-label">Publish Date</label>
+            <input type="date" class="form-control" id="publishDate" value="2025-09-18" required>
+          </div>
+          <div class="mb-3">
+            <label for="fileUpload" class="form-label">File Upload</label>
+            <input type="file" class="form-control" id="fileUpload">
+            <small class="text-muted">Leave empty to keep existing file</small>
+          </div>
+          <div class="mb-3">
+            <label for="thumbnail" class="form-label">Thumbnail Image</label>
+            <input type="file" class="form-control" id="thumbnail">
+            <small class="text-muted">Leave empty to keep existing thumbnail</small>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="reset" class="btn btn-secondary">Reset</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+
+  // Auto-generate slug from title
+  document.getElementById('title').addEventListener('input', function(){
+    const slug = this.value.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-');
+    document.getElementById('slug').value = slug;
+  });
+
+  // Form submit
+  document.getElementById('editEbookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('Ebook / Download updated successfully!');
+  });
+</script>
+</body>
+</html>

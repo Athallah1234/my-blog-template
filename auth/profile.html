@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile | ModernBlog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 1.6rem;
+    }
+
+    .breadcrumb-item + .breadcrumb-item::before {
+      content: ">";
+    }
+
+    .profile-card, .posts-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .profile-card:hover, .posts-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      color: #007bff;
+      margin-bottom: 1rem;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #007bff;
+    }
+
+    .sidebar-link {
+      display: block;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      margin-bottom: 0.5rem;
+      color: #495057;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .sidebar-link:hover, .sidebar-link.active {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    footer {
+      background: #f8f9fa;
+      color: #495057;
+      padding: 4rem 0 2rem;
+      margin-top: auto;
+    }
+    footer a {
+      color: #6c757d;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    footer a:hover {
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">ModernBlog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Category</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Tags</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Archive</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">Profile</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="container mt-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+    </ol>
+  </nav>
+</div>
+
+<!-- Main Profile Container -->
+<div class="container">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 mb-4">
+      <div class="d-grid gap-2">
+        <a href="#" class="sidebar-link active"><i class="fas fa-user me-2"></i>Profile</a>
+        <a href="#" class="sidebar-link"><i class="fas fa-cog me-2"></i>Settings</a>
+        <a href="#" class="sidebar-link"><i class="fas fa-shield-alt me-2"></i>Security</a>
+        <a href="#" class="sidebar-link"><i class="fas fa-file-alt me-2"></i>My Posts</a>
+        <a href="#" class="sidebar-link text-danger"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+      </div>
+    </div>
+
+    <!-- Profile Content -->
+    <div class="col-md-9">
+      <!-- Profile Info -->
+      <div class="profile-card text-center" data-aos="fade-up">
+        <img src="https://i.pravatar.cc/150" alt="User Avatar" class="avatar">
+        <h2>John Doe</h2>
+        <p><i class="fas fa-envelope me-1"></i> john.doe@example.com</p>
+        <p><i class="fas fa-phone me-1"></i> +62 812-3456-7890</p>
+      </div>
+
+      <!-- Edit Profile Form -->
+      <div class="profile-card" data-aos="fade-up">
+        <h2>Edit Profile</h2>
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" value="John Doe" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" value="john.doe@example.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="tel" class="form-control" id="phone" value="+62 812-3456-7890">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">New Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter new password">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Update Profile</button>
+        </form>
+      </div>
+
+      <!-- My Posts -->
+      <div class="posts-card" data-aos="fade-up">
+        <h2>My Posts</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            How to Build a Modern Blog
+            <span class="badge bg-primary rounded-pill">Edit</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Bootstrap 5 Tips & Tricks
+            <span class="badge bg-primary rounded-pill">Edit</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Responsive Design Best Practices
+            <span class="badge bg-primary rounded-pill">Edit</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <h5>About</h5>
+        <p>ModernBlog is a personal blog sharing tips, tutorials, and insights about web development and modern design trends.</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Category</a></li>
+          <li><a href="#">Tags</a></li>
+          <li><a href="#">Archive</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>Follow Us</h5>
+        <a href="#" class="me-2"><i class="fab fa-facebook fa-lg"></i></a>
+        <a href="#" class="me-2"><i class="fab fa-twitter fa-lg"></i></a>
+        <a href="#" class="me-2"><i class="fab fa-instagram fa-lg"></i></a>
+        <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <small>&copy; 2025 ModernBlog. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+</script>
+</body>
+</html>
